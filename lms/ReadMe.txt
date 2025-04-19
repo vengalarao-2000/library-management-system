@@ -21,3 +21,15 @@ End Points:
 7. http://localhost:8080/api/books/{id} and Method: DELETE
 8. http://localhost:8080/api/books/{bookId}/borrow/{userId} and Method: POST
 9. http://localhost:8080/api/books/{bookId}/return and Method: POST
+
+
+Thymeleaf UI URLs:
+
+Users:
+- List all users: http://localhost:8080/users
+- Add a new user: http://localhost:8080/users/new
+
+Books:
+- Lists all books and borrowed information: http://localhost:8080/books
+	- Edit and Delete can be handled here.
+- Add new book: http://localhost:8080/books/new
