@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books</title>
+</head>
+<body>
+    <h2>Books List</h2>
+    <a th:href="@{/books/new}">Add New Book</a>
+    <table border="1">
+        <thead>
+            <tr><th>Title</th><th>Author</th><th>Borrowed</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.borrowed ? 'Yes' : 'No'}"></td>
+                <td>
+                    <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a> |
+                    <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
+                    
+                    <form th:if="${!book.borrowed}" th:action="@{/books/{id}/borrow(id=${book.id})}" method="post" style="display:inline;">
+                        <input type="number" name="userId" placeholder="User ID" required/>
+                        <button type="submit">Borrow</button>
+                    </form>
+                    
+                    <form th:if="${book.borrowed}" th:action="@{/books/{id}/return(id=${book.id})}" method="post" style="display:inline;">
+                        <button type="submit">Return</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
