@@ -27,8 +27,15 @@
                 select.value = "";
             }
         }
+        
+        function toggleBorrowedSelect() {
+        	if (!select.value) {
+        		checkbox.checked = false;
+        	}
+        }
 
         checkbox.addEventListener("change", toggleBorrowedBy);
+        select.addEventListener("change", toggleBorrowedSelect);
     </script>
 </body>
 </html>
